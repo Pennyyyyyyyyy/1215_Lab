@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    .result-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    var x = null; // Storing the initial first input
+    var y = null; // Storing the initial second input
+
+    function compareInputs() {
+      x = parseInt(window.prompt("Enter first integer"));
+      y = parseInt(window.prompt("Enter second integer"));
+      var resultContainer = document.getElementById('result-container');
+      var backgroundColor = document.body.style;
+
+      if (!isNaN(x) && !isNaN(y)) {
+        if (x > y) {
+          backgroundColor.backgroundColor = 'lightblue';
+          resultContainer.innerHTML = x + " > " + y;
+        } else if (y > x) {
+          backgroundColor.backgroundColor = 'orange';
+          resultContainer.innerHTML = y + " > " + x;
+        } else {
+          backgroundColor.backgroundColor = 'lightyellow';
+          resultContainer.innerHTML = y + " = " + x;
+        }
+      } else {
+        alert("Please enter valid numbers.");
+      }
+    }
+
+    window.onload = compareInputs;
+
+    function showFirstInput() {
+      if (x !== null) {
+        alert("First input: " + x);
+      } else {
+        alert("No initial input recorded.");
+      }
+    }
+
+    function showSecondInput() {
+      if (y !== null) {
+        alert("Second input: " + y);
+      } else {
+        alert("No initial input recorded.");
+      }
+    }
+
+    function resetBackgroundColor() {
+      document.body.style.backgroundColor = ''; // Resetting to default (blank)
+      document.getElementById('result-container').innerHTML = ''; // Clearing output
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <h1>Interactive Buttons</h1>
+  </div>
+  <div class="button-container">
+    <input type="button" class="button red" value="1st button" onClick="showFirstInput()">
+    <input type="button" class="button blue" value="2nd button" onClick="showSecondInput()">
+    <input type="button" class="button green" value="Button 3" onClick="alert('change to Green background color'); document.body.style.backgroundColor = 'green';">
+    <input type="button" class="button yellow" value="Reset BG color" onClick="resetBackgroundColor()">
+  </div>
+  <div class="result-container" id="result-container"></div>
+</body>
+</html>
+
+
+
+
